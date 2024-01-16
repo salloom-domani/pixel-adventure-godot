@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://egt36isvmr2a"]
+
+[ext_resource type="Script" path="res://scripts/boxes/box.gd" id="1_s7b63"]
+[ext_resource type="PackedScene" uid="uid://rypvbqn1j2ac" path="res://scenes/boxes/box_2_parts.tscn" id="2_e5cdh"]
+[ext_resource type="PackedScene" uid="uid://dvj6jtar3qwp5" path="res://scenes/fruit.tscn" id="3_rnu7k"]
+[ext_resource type="Texture2D" uid="uid://xhjoabmur2ie" path="res://sprites/Boxes/Box2/Idle.png" id="4_e4a2n"]
+[ext_resource type="Texture2D" uid="uid://b0qwbius3543g" path="res://sprites/Boxes/Box2/Hit (28x24).png" id="5_2yo84"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ows3o"]
+atlas = ExtResource("5_2yo84")
+region = Rect2(0, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es8db"]
+atlas = ExtResource("5_2yo84")
+region = Rect2(28, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gioa2"]
+atlas = ExtResource("5_2yo84")
+region = Rect2(56, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjin1"]
+atlas = ExtResource("5_2yo84")
+region = Rect2(84, 0, 28, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vil37"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e4a2n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ows3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es8db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gioa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjin1")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us6ep"]
+
+[node name="Box" type="StaticBody2D"]
+collision_mask = 7
+script = ExtResource("1_s7b63")
+parts = ExtResource("2_e5cdh")
+fruit = ExtResource("3_rnu7k")
+health = 5
+fruits_count = 5
+one_by_one = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vil37")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_us6ep")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

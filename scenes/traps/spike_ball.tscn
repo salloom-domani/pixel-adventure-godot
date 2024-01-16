@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b054km8ittjnv"]
+
+[ext_resource type="Texture2D" uid="uid://d1cyjsec5y7be" path="res://sprites/Traps/Spiked Ball/Chain.png" id="1_8ceqf"]
+[ext_resource type="Script" path="res://scripts/traps/spike_ball.gd" id="1_20o50"]
+[ext_resource type="PackedScene" uid="uid://dnouv2qdbqdyf" path="res://scenes/traps/chain.tscn" id="2_pioyf"]
+[ext_resource type="Texture2D" uid="uid://dmu3ondg0ejno" path="res://sprites/Traps/Spiked Ball/Spiked Ball.png" id="2_qy2sp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2obbb"]
+radius = 13.5
+
+[node name="SpikeBall" type="Node2D"]
+position = Vector2(256, 112)
+script = ExtResource("1_20o50")
+loops_in_second = 0.5
+
+[node name="Chain" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_pioyf")]
+texture = ExtResource("1_8ceqf")
+target = NodePath("../Ball")
+
+[node name="Ball" type="AnimatableBody2D" parent="." groups=["spike"]]
+z_index = 1
+position = Vector2(0, 88)
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("2_qy2sp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+visible = false
+position = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_2obbb")
+
+[editable path="Chain"]

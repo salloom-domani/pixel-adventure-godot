@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://cac1cnk8ash4b"]
+
+[ext_resource type="Script" path="res://scripts/traps/fan.gd" id="1_0m8f8"]
+[ext_resource type="Texture2D" uid="uid://3ex7an053k6" path="res://sprites/Traps/Fan/Off.png" id="1_7m4yx"]
+[ext_resource type="Texture2D" uid="uid://cpg0c37ly37hk" path="res://sprites/Traps/Fan/On (24x8).png" id="2_x18gq"]
+[ext_resource type="Texture2D" uid="uid://cox88sgbq7l5w" path="res://sprites/Dust Particle.png" id="4_fh62t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1803v"]
+atlas = ExtResource("2_x18gq")
+region = Rect2(0, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qejyy"]
+atlas = ExtResource("2_x18gq")
+region = Rect2(24, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q470r"]
+atlas = ExtResource("2_x18gq")
+region = Rect2(48, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4vrl"]
+atlas = ExtResource("2_x18gq")
+region = Rect2(72, 0, 24, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4svd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7m4yx")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1803v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qejyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q470r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4vrl")
+}],
+"loop": true,
+"name": &"on",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl7ds"]
+resource_local_to_scene = true
+size = Vector2(32, 160)
+
+[sub_resource type="Gradient" id="Gradient_hy18h"]
+offsets = PackedFloat32Array(0, 0.988095)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.392157)
+
+[sub_resource type="Gradient" id="Gradient_p7w3w"]
+colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0.392157)
+
+[node name="Node2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0m8f8")
+tall = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4svd1")
+animation = &"off"
+autoplay = "off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -76)
+shape = SubResource("RectangleShape2D_dl7ds")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -4)
+emitting = false
+amount = 25
+lifetime = 0.7
+texture = ExtResource("4_fh62t")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 2)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+linear_accel_min = 1000.0
+linear_accel_max = 1000.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+color_ramp = SubResource("Gradient_hy18h")
+color_initial_ramp = SubResource("Gradient_p7w3w")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

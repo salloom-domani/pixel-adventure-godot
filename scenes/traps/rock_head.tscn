@@ -1,0 +1,209 @@
+[gd_scene load_steps=30 format=3 uid="uid://b0nmaimp57axg"]
+
+[ext_resource type="Texture2D" uid="uid://brrvjrp508yri" path="res://sprites/Traps/Rock Head/Blink (42x42).png" id="1_3c827"]
+[ext_resource type="Script" path="res://scripts/traps/rock_head.gd" id="1_msvwd"]
+[ext_resource type="Texture2D" uid="uid://bj8sp41jopl8b" path="res://sprites/Traps/Rock Head/Idle.png" id="1_nd2ch"]
+[ext_resource type="Texture2D" uid="uid://c2bvqrprj1hwr" path="res://sprites/Traps/Rock Head/Bottom Hit (42x42).png" id="2_sx56f"]
+[ext_resource type="Texture2D" uid="uid://2bhj085swash" path="res://sprites/Traps/Rock Head/Left Hit (42x42).png" id="3_rtjed"]
+[ext_resource type="Texture2D" uid="uid://4r5w0g5847vh" path="res://sprites/Traps/Rock Head/Right Hit (42x42).png" id="4_u0y1c"]
+[ext_resource type="Texture2D" uid="uid://u7mkrnlcycni" path="res://sprites/Traps/Rock Head/Top Hit (42x42).png" id="5_6phe4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgfry"]
+atlas = ExtResource("1_3c827")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_211o3"]
+atlas = ExtResource("1_3c827")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2upvo"]
+atlas = ExtResource("1_3c827")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk2nw"]
+atlas = ExtResource("1_3c827")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blshd"]
+atlas = ExtResource("2_sx56f")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3j4x"]
+atlas = ExtResource("2_sx56f")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaddt"]
+atlas = ExtResource("2_sx56f")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du7po"]
+atlas = ExtResource("2_sx56f")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqtwt"]
+atlas = ExtResource("3_rtjed")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhexc"]
+atlas = ExtResource("3_rtjed")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x11hb"]
+atlas = ExtResource("3_rtjed")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtrdi"]
+atlas = ExtResource("3_rtjed")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c2p1"]
+atlas = ExtResource("4_u0y1c")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swhrm"]
+atlas = ExtResource("4_u0y1c")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0chr"]
+atlas = ExtResource("4_u0y1c")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhjv6"]
+atlas = ExtResource("4_u0y1c")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ergds"]
+atlas = ExtResource("5_6phe4")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3akt4"]
+atlas = ExtResource("5_6phe4")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln4ho"]
+atlas = ExtResource("5_6phe4")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t8jw"]
+atlas = ExtResource("5_6phe4")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81oub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgfry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_211o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2upvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk2nw")
+}],
+"loop": true,
+"name": &"blink",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blshd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3j4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaddt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du7po")
+}],
+"loop": false,
+"name": &"hit_bottom",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqtwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhexc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x11hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtrdi")
+}],
+"loop": false,
+"name": &"hit_left",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c2p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swhrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0chr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhjv6")
+}],
+"loop": false,
+"name": &"hit_right",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ergds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3akt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln4ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t8jw")
+}],
+"loop": false,
+"name": &"hit_top",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nd2ch")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aa2nr"]
+size = Vector2(31.9, 31.9)
+
+[node name="RockHead" type="AnimatableBody2D"]
+sync_to_physics = false
+script = ExtResource("1_msvwd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_81oub")
+animation = &"blink"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aa2nr")
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(24, 0)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

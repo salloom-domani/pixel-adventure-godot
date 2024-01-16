@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://rypvbqn1j2ac"]
+
+[ext_resource type="Script" path="res://scripts/boxes/parts_root.gd" id="1_uhttk"]
+[ext_resource type="Texture2D" uid="uid://6pg0edwul5l2" path="res://sprites/Boxes/Box2/Break.png" id="2_fr0uo"]
+[ext_resource type="Script" path="res://scripts/boxes/part.gd" id="2_vtyxw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lljsf"]
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgrn0"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0xub"]
+size = Vector2(10, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f34pk"]
+size = Vector2(10, 9)
+
+[node name="Parts" type="Node2D"]
+script = ExtResource("1_uhttk")
+
+[node name="Top_Left" type="RigidBody2D" parent="."]
+position = Vector2(-10, -10)
+collision_layer = 4
+collision_mask = 5
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_vtyxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Top_Left"]
+texture = ExtResource("2_fr0uo")
+centered = false
+region_enabled = true
+region_rect = Rect2(9, 8, 10, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Left"]
+position = Vector2(5, 4)
+shape = SubResource("RectangleShape2D_lljsf")
+
+[node name="Top_Right" type="RigidBody2D" parent="."]
+position = Vector2(0, -10)
+collision_layer = 4
+collision_mask = 5
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_vtyxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Top_Right"]
+texture = ExtResource("2_fr0uo")
+centered = false
+region_enabled = true
+region_rect = Rect2(36, 7, 10, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Right"]
+position = Vector2(5, 5.5)
+shape = SubResource("RectangleShape2D_wgrn0")
+
+[node name="Bot_Left" type="RigidBody2D" parent="."]
+position = Vector2(-10, -2)
+collision_layer = 4
+collision_mask = 5
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_vtyxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bot_Left"]
+texture = ExtResource("2_fr0uo")
+centered = false
+region_enabled = true
+region_rect = Rect2(65, 6, 10, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bot_Left"]
+position = Vector2(5, 6)
+shape = SubResource("RectangleShape2D_r0xub")
+
+[node name="Bot_Right" type="RigidBody2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 4
+collision_mask = 5
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_vtyxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bot_Right"]
+texture = ExtResource("2_fr0uo")
+centered = false
+region_enabled = true
+region_rect = Rect2(92, 7, 10, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bot_Right"]
+position = Vector2(5, 4.5)
+shape = SubResource("RectangleShape2D_f34pk")

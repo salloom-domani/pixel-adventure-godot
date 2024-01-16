@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://bknpxekv71pt4"]
+
+[ext_resource type="Script" path="res://scripts/boxes/box.gd" id="1_8f5sn"]
+[ext_resource type="Texture2D" uid="uid://caisdusebo10n" path="res://sprites/Boxes/Box1/Idle.png" id="1_gmawc"]
+[ext_resource type="Texture2D" uid="uid://5ihqdmoewv2q" path="res://sprites/Boxes/Box1/Hit (28x24).png" id="2_0kc8h"]
+[ext_resource type="PackedScene" uid="uid://dvj6jtar3qwp5" path="res://scenes/fruit.tscn" id="3_pgqln"]
+[ext_resource type="PackedScene" uid="uid://deuv5gudcxsxo" path="res://scenes/boxes/box_parts.tscn" id="4_a2ye6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxen4"]
+atlas = ExtResource("2_0kc8h")
+region = Rect2(0, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4ttx"]
+atlas = ExtResource("2_0kc8h")
+region = Rect2(28, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd7gr"]
+atlas = ExtResource("2_0kc8h")
+region = Rect2(56, 0, 28, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1algh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gmawc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxen4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4ttx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd7gr")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us6ep"]
+
+[node name="Box" type="StaticBody2D"]
+collision_mask = 7
+script = ExtResource("1_8f5sn")
+parts = ExtResource("4_a2ye6")
+fruit = ExtResource("3_pgqln")
+explode_delay = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1algh")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_us6ep")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

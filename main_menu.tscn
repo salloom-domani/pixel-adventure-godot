@@ -1,0 +1,179 @@
+[gd_scene load_steps=40 format=3 uid="uid://ba1wkveb88t5w"]
+
+[ext_resource type="Script" path="res://scripts/levels.gd" id="1_ihr13"]
+[ext_resource type="Texture2D" uid="uid://crcghpeh58kcy" path="res://sprites/Menu/Levels/01.png" id="1_wl63c"]
+[ext_resource type="PackedScene" uid="uid://b0nkv4xy6dgnp" path="res://levels/level_1.tscn" id="2_542dw"]
+[ext_resource type="Texture2D" uid="uid://g6eju1mw6a7t" path="res://sprites/Menu/Levels/02.png" id="2_l0msv"]
+[ext_resource type="Texture2D" uid="uid://d2b4vdqpixq7c" path="res://sprites/Menu/Levels/03.png" id="3_w5ige"]
+[ext_resource type="PackedScene" uid="uid://dprwxkajfjr5r" path="res://levels/level_2.tscn" id="3_xhnel"]
+[ext_resource type="Texture2D" uid="uid://du65chu7xxkds" path="res://sprites/Menu/Levels/04.png" id="4_m5h2t"]
+[ext_resource type="PackedScene" uid="uid://6oys0rjw53po" path="res://levels/level_3.tscn" id="4_uioy2"]
+[ext_resource type="Texture2D" uid="uid://de8nvlv4pxvph" path="res://sprites/Menu/Levels/05.png" id="5_cg1t1"]
+[ext_resource type="PackedScene" uid="uid://c2vxggh6l23kx" path="res://levels/level_4.tscn" id="5_rec0t"]
+[ext_resource type="Texture2D" uid="uid://c1nqjaii22mva" path="res://sprites/Menu/Levels/06.png" id="6_b4v5j"]
+[ext_resource type="PackedScene" uid="uid://bv2xyp6aryq2s" path="res://levels/level_5.tscn" id="6_rr10r"]
+[ext_resource type="PackedScene" uid="uid://b6fu2h45bm8" path="res://levels/level_6.tscn" id="7_iinm7"]
+[ext_resource type="Texture2D" uid="uid://jis802ljfam2" path="res://sprites/Menu/Levels/07.png" id="7_siqgi"]
+[ext_resource type="Texture2D" uid="uid://cwlwqhv6mdxgf" path="res://sprites/Menu/Levels/08.png" id="8_eo11b"]
+[ext_resource type="PackedScene" uid="uid://dcl588fil4im" path="res://levels/level_7.tscn" id="8_i2ik2"]
+[ext_resource type="PackedScene" uid="uid://b70i0e7tl67ob" path="res://levels/level_8.tscn" id="9_8mn8p"]
+[ext_resource type="Texture2D" uid="uid://c4gckxiwu0j7h" path="res://sprites/Menu/Levels/09.png" id="9_asd6j"]
+[ext_resource type="Texture2D" uid="uid://djrhk1v1kuloc" path="res://sprites/Menu/Levels/10.png" id="10_6un4e"]
+[ext_resource type="PackedScene" uid="uid://buotfyy1y35j1" path="res://levels/level_9.tscn" id="10_wxr5c"]
+[ext_resource type="Texture2D" uid="uid://dxuitnvy18a1e" path="res://sprites/Menu/Levels/11.png" id="11_ah70c"]
+[ext_resource type="PackedScene" uid="uid://54ak3j0fsxnu" path="res://levels/level_10.tscn" id="11_axvxt"]
+[ext_resource type="Texture2D" uid="uid://bvyulpdk4xl15" path="res://sprites/Menu/Levels/12.png" id="12_8hfj7"]
+[ext_resource type="PackedScene" uid="uid://bjw01l4weu2w1" path="res://levels/level_11.tscn" id="12_bhrlu"]
+[ext_resource type="Texture2D" uid="uid://c36jpsw5rb555" path="res://sprites/Menu/Levels/13.png" id="13_0iiax"]
+[ext_resource type="PackedScene" uid="uid://co5vwv7hx7y0e" path="res://levels/level_12.tscn" id="13_famay"]
+[ext_resource type="PackedScene" uid="uid://c2ojyfrdodnlc" path="res://levels/level_13.tscn" id="14_m6g0q"]
+[ext_resource type="Texture2D" uid="uid://us2sxpnvioxw" path="res://sprites/Menu/Levels/14.png" id="14_om1br"]
+[ext_resource type="Texture2D" uid="uid://cplvp18b4qrfb" path="res://sprites/Menu/Levels/15.png" id="15_3wgk4"]
+[ext_resource type="PackedScene" uid="uid://wfb0tcmdu426" path="res://levels/level_14.tscn" id="15_dvkxv"]
+[ext_resource type="PackedScene" uid="uid://g2na2fn5sd5k" path="res://levels/level_15.tscn" id="16_7kky0"]
+[ext_resource type="Texture2D" uid="uid://dxkimvoq5lid" path="res://sprites/Menu/Levels/16.png" id="16_jarc0"]
+[ext_resource type="Texture2D" uid="uid://16op2cy5ip76" path="res://sprites/Menu/Levels/17.png" id="17_640aq"]
+[ext_resource type="PackedScene" uid="uid://ddcgacfye1rl5" path="res://levels/level_16.tscn" id="17_ttoax"]
+[ext_resource type="PackedScene" uid="uid://cr8ohfnfntbt7" path="res://levels/level_17.tscn" id="18_6j3gf"]
+[ext_resource type="Texture2D" uid="uid://5qmdfo5hawsu" path="res://sprites/Menu/Levels/18.png" id="18_h31m3"]
+[ext_resource type="FontFile" uid="uid://31blqr0uq5nm" path="res://sprites/Menu/Text/Text (White) (8x10).png" id="19_dnbg7"]
+[ext_resource type="PackedScene" uid="uid://cr41aqyex3dd2" path="res://levels/level_18.tscn" id="19_r5t8u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_71my1"]
+font = ExtResource("19_dnbg7")
+font_size = 24
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.121569, 0.188235, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.5
+offset_top = -59.5
+offset_right = 106.5
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LEVELS"
+label_settings = SubResource("LabelSettings_71my1")
+
+[node name="Levels" type="HFlowContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("1_ihr13")
+levels = Array[PackedScene]([ExtResource("2_542dw"), ExtResource("3_xhnel"), ExtResource("4_uioy2"), ExtResource("5_rec0t"), ExtResource("6_rr10r"), ExtResource("7_iinm7"), ExtResource("8_i2ik2"), ExtResource("9_8mn8p"), ExtResource("10_wxr5c"), ExtResource("11_axvxt"), ExtResource("12_bhrlu"), ExtResource("13_famay"), ExtResource("14_m6g0q"), ExtResource("15_dvkxv"), ExtResource("16_7kky0"), ExtResource("17_ttoax"), ExtResource("18_6j3gf"), ExtResource("19_r5t8u")])
+
+[node name="Level1" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("1_wl63c")
+flat = true
+
+[node name="Level2" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("2_l0msv")
+flat = true
+
+[node name="Level3" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("3_w5ige")
+flat = true
+
+[node name="Level4" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("4_m5h2t")
+flat = true
+
+[node name="Level5" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("5_cg1t1")
+flat = true
+
+[node name="Level6" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("6_b4v5j")
+flat = true
+
+[node name="Level7" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("7_siqgi")
+flat = true
+
+[node name="Level8" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("8_eo11b")
+flat = true
+
+[node name="Level9" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("9_asd6j")
+flat = true
+
+[node name="Level10" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("10_6un4e")
+flat = true
+
+[node name="Level11" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("11_ah70c")
+flat = true
+
+[node name="Level12" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("12_8hfj7")
+flat = true
+
+[node name="Level13" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("13_0iiax")
+flat = true
+
+[node name="Level14" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("14_om1br")
+flat = true
+
+[node name="Level15" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("15_3wgk4")
+flat = true
+
+[node name="Level16" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("16_jarc0")
+flat = true
+
+[node name="Level17" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("17_640aq")
+flat = true
+
+[node name="Level18" type="Button" parent="VBoxContainer/Levels"]
+layout_mode = 2
+icon = ExtResource("18_h31m3")
+flat = true

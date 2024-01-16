@@ -1,0 +1,28 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmb4f6t21trer"]
+
+[ext_resource type="Shader" uid="uid://q5gl6l885xlp" path="res://shaders/moving_background.tres" id="1_ltwn3"]
+[ext_resource type="Texture2D" uid="uid://i0t8o13otn4e" path="res://sprites/Backgrounds/Purple.png" id="2_1npol"]
+[ext_resource type="Script" path="res://scripts/ui/background.gd" id="3_2a81s"]
+[ext_resource type="Texture2D" uid="uid://cyt56kk44s0tp" path="res://sprites/Backgrounds/Blue.png" id="4_qufic"]
+[ext_resource type="Texture2D" uid="uid://brqq1ryp05rgs" path="res://sprites/Backgrounds/Brown.png" id="5_0xses"]
+[ext_resource type="Texture2D" uid="uid://dbipeyw7diq0v" path="res://sprites/Backgrounds/Gray.png" id="6_47bxb"]
+[ext_resource type="Texture2D" uid="uid://c15phtdccgxu0" path="res://sprites/Backgrounds/Green.png" id="7_8rfvj"]
+[ext_resource type="Texture2D" uid="uid://catkmf2ryootn" path="res://sprites/Backgrounds/Pink.png" id="8_ld2rb"]
+[ext_resource type="Texture2D" uid="uid://b3wh6g0xia65q" path="res://sprites/Backgrounds/Yellow.png" id="9_vi7ta"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1e0s"]
+shader = ExtResource("1_ltwn3")
+shader_parameter/Speed = -0.25
+
+[node name="Background" type="TextureRect"]
+material = SubResource("ShaderMaterial_g1e0s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -0.000274658
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1npol")
+stretch_mode = 1
+script = ExtResource("3_2a81s")
+textures = Array[Texture2D]([ExtResource("4_qufic"), ExtResource("5_0xses"), ExtResource("6_47bxb"), ExtResource("7_8rfvj"), ExtResource("8_ld2rb"), ExtResource("2_1npol"), ExtResource("9_vi7ta")])

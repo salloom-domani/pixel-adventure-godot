@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://26phnqpgx1lf"]
+
+[ext_resource type="Script" path="res://scripts/boxes/box.gd" id="1_8sboh"]
+[ext_resource type="PackedScene" uid="uid://bxvxf32fdsenm" path="res://scenes/boxes/empty_box_parts.tscn" id="2_2mmyd"]
+[ext_resource type="PackedScene" uid="uid://dvj6jtar3qwp5" path="res://scenes/fruit.tscn" id="3_h5kn7"]
+[ext_resource type="Texture2D" uid="uid://gbxsc8slfsev" path="res://sprites/Traps/Blocks/Idle.png" id="4_ek7ei"]
+[ext_resource type="Texture2D" uid="uid://bibammcbk3mrc" path="res://sprites/Traps/Blocks/HitTop (22x22).png" id="5_mpt4f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66h71"]
+atlas = ExtResource("5_mpt4f")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_himqw"]
+atlas = ExtResource("5_mpt4f")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inbgg"]
+atlas = ExtResource("5_mpt4f")
+region = Rect2(44, 0, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1algh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ek7ei")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66h71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_himqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inbgg")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us6ep"]
+size = Vector2(16, 16)
+
+[node name="Box" type="StaticBody2D"]
+collision_mask = 7
+script = ExtResource("1_8sboh")
+parts = ExtResource("2_2mmyd")
+fruit = ExtResource("3_h5kn7")
+fruits_count = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1algh")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_us6ep")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

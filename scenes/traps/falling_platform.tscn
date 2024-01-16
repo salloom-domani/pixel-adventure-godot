@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://du5rcra6yxc7e"]
+
+[ext_resource type="Script" path="res://scripts/traps/falling_platform.gd" id="1_m0vgm"]
+[ext_resource type="Texture2D" uid="uid://bnu7ld85sv6as" path="res://sprites/Traps/Falling Platforms/Off.png" id="1_olgyf"]
+[ext_resource type="Texture2D" uid="uid://bngs3txkbyvad" path="res://sprites/Traps/Falling Platforms/On (32x10).png" id="2_mi73y"]
+[ext_resource type="Texture2D" uid="uid://cox88sgbq7l5w" path="res://sprites/Dust Particle.png" id="4_nsb36"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6l18"]
+atlas = ExtResource("2_mi73y")
+region = Rect2(0, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jfpq"]
+atlas = ExtResource("2_mi73y")
+region = Rect2(32, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vdbt"]
+atlas = ExtResource("2_mi73y")
+region = Rect2(64, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep0dw"]
+atlas = ExtResource("2_mi73y")
+region = Rect2(96, 0, 32, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kjop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_olgyf")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6l18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jfpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vdbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep0dw")
+}],
+"loop": true,
+"name": &"on",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po6pk"]
+size = Vector2(32, 5)
+
+[sub_resource type="Gradient" id="Gradient_ru818"]
+offsets = PackedFloat32Array(0, 0.988095)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_w1swe"]
+colors = PackedColorArray(1, 1, 1, 0.784314, 1, 1, 1, 0.392157)
+
+[node name="FallingPlatform" type="RigidBody2D"]
+collision_mask = 3
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_m0vgm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2kjop")
+animation = &"on"
+autoplay = "on"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_po6pk")
+one_way_collision = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+amount = 5
+lifetime = 0.5
+texture = ExtResource("4_nsb36")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 0)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+linear_accel_min = 1000.0
+linear_accel_max = 1000.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+color_ramp = SubResource("Gradient_ru818")
+color_initial_ramp = SubResource("Gradient_w1swe")

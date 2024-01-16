@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://boltxcq1tauxm"]
+
+[ext_resource type="Script" path="res://scripts/boxes/box.gd" id="1_qfuue"]
+[ext_resource type="PackedScene" uid="uid://351c1d8206i8" path="res://scenes/boxes/box_1_parts.tscn" id="2_acvej"]
+[ext_resource type="PackedScene" uid="uid://dvj6jtar3qwp5" path="res://scenes/fruit.tscn" id="3_k2ala"]
+[ext_resource type="Texture2D" uid="uid://caisdusebo10n" path="res://sprites/Boxes/Box1/Idle.png" id="4_ghnxe"]
+[ext_resource type="Texture2D" uid="uid://5ihqdmoewv2q" path="res://sprites/Boxes/Box1/Hit (28x24).png" id="5_83njy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxen4"]
+atlas = ExtResource("5_83njy")
+region = Rect2(0, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4ttx"]
+atlas = ExtResource("5_83njy")
+region = Rect2(28, 0, 28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd7gr"]
+atlas = ExtResource("5_83njy")
+region = Rect2(56, 0, 28, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1algh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ghnxe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxen4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4ttx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd7gr")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us6ep"]
+
+[node name="Box" type="StaticBody2D"]
+collision_mask = 7
+script = ExtResource("1_qfuue")
+parts = ExtResource("2_acvej")
+fruit = ExtResource("3_k2ala")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1algh")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_us6ep")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
