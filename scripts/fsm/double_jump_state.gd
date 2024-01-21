@@ -1,5 +1,6 @@
+@tool
 class_name DoubleJumpState
-extends PlayerState
+extends PlayerStateAnimation
 
 @onready var dust_jump_particles: CPUParticles2D = %DustJumpParticles
 

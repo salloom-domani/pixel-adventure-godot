@@ -1,4 +1,5 @@
 @tool
+class_name Fruit
 extends RigidBody2D
 
 @onready var animator = $AnimatedSprite2D

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://btebjkd22sn1l"]
+
+[ext_resource type="Script" path="res://scripts/enemies/trunk_bullet.gd" id="1_cihx6"]
+[ext_resource type="PackedScene" uid="uid://drdmmcp5si7og" path="res://scenes/enemies/bee/bee_bullet_parts.tscn" id="2_c2v3p"]
+[ext_resource type="Texture2D" uid="uid://cakhjq7or14kp" path="res://sprites/Enemies/Bee/Bullet.png" id="3_yj8h7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnlee"]
+size = Vector2(8, 9)
+
+[node name="PlantBullet" type="RigidBody2D" groups=["bullet"]]
+collision_layer = 0
+collision_mask = 3
+gravity_scale = 0.0
+max_contacts_reported = 3
+contact_monitor = true
+script = ExtResource("1_cihx6")
+parts_scene = ExtResource("2_c2v3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_yj8h7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_tnlee")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

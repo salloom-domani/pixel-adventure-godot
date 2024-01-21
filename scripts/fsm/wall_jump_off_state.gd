@@ -1,5 +1,6 @@
+@tool
 class_name WallJumpOffState
-extends PlayerState
+extends PlayerStateAnimation
 
 const WALL_JUMP_OFF_FACTOR = 1.5
 

@@ -1,5 +1,6 @@
+@tool
 class_name FallState
-extends PlayerState
+extends PlayerStateAnimation
 
 
 #func phy_update(delta):

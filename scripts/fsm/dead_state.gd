@@ -1,16 +1,15 @@
+@tool
 class_name DeadState
-extends PlayerState
+extends PlayerStateAnimation
 
 
 var clock_wise = false
 
 func enter(args = {}):
+	super.enter(args)
 	Global.camera_shaked.emit()
 	character.disable_checks()
-	animator.animation = "hit"
 	character.velocity = Vector2.ZERO
-	character.collision_layer = 0
-	character.collision_mask = 0
 	var direction = args["direction"] as Vector2
 	if direction.x > 0:
 		clock_wise = true
@@ -31,10 +30,12 @@ func phy_update(delta):
 		character.velocity.y += player_data.GRAVITY * delta
 	
 	if character.position.y > 300:
-		parent.exit()
+		character.queue_free()
+		#parent.exit()
 
-func exit():
-	character.queue_free()
+#func exit():
+	#super.exit()
+	#character.queue_free()
 
 
 func _init() -> void:

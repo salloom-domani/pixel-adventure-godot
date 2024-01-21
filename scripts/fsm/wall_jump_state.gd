@@ -1,5 +1,6 @@
+@tool
 class_name WallJumpState
-extends PlayerState
+extends PlayerStateAnimation
 
 
 var wall_jump_timer = 0

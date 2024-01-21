@@ -1,5 +1,6 @@
+@tool
 class_name IdleState
-extends PlayerState
+extends PlayerStateAnimation
 
 @onready var ground: RayCast2D = %Ground
 

@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dprwxkajfjr5r"]
+[gd_scene load_steps=6 format=3 uid="uid://dprwxkajfjr5r"]
 
 [ext_resource type="PackedScene" uid="uid://crfa2wpvkfe54" path="res://levels/base_level.tscn" id="1_uhkex"]
 [ext_resource type="PackedScene" uid="uid://boltxcq1tauxm" path="res://scenes/boxes/box_1.tscn" id="2_1wn1u"]
+[ext_resource type="Texture2D" uid="uid://catkmf2ryootn" path="res://sprites/Backgrounds/Pink.png" id="2_afdu1"]
 [ext_resource type="PackedScene" uid="uid://egt36isvmr2a" path="res://scenes/boxes/box_2.tscn" id="3_2vobh"]
 [ext_resource type="PackedScene" uid="uid://b1rkkp1uim56y" path="res://scenes/boxes/box_3.tscn" id="4_vhnrv"]
 
 [node name="World" instance=ExtResource("1_uhkex")]
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_afdu1")
 
 [node name="Player" parent="." index="2"]
 position = Vector2(56, 192)

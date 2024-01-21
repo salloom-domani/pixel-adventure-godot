@@ -1,6 +1,11 @@
 class_name State
 extends Node
 
+@export var debug = false: get = get_debug
+
+func get_debug():
+	return debug or parent and parent.get_debug()
+
 var id
 var parent: State
 var character: CharacterBody2D
@@ -10,15 +15,17 @@ var current_state
 signal state_changed(id: String)
 
 
+# TODO: make an inner class for the args
 func enter(args = {}):
-	#print("entering: ", id)
+	if debug :
+		print("entering: ", id)
 	if current_state:
 		current_state.enter(args)
-	else:
-		animator.animation = id
+
 
 func exit():
-	#print("exiting: ", id)
+	if debug:
+		print("exiting: ", id)
 	if current_state:
 		current_state.exit()
 		current_state = null
@@ -74,3 +81,42 @@ func start() -> void:
 			state.start()
 	ready()
 
+
+
+# TIMERS
+func add_default_timer(time: float, callback: Callable):
+	return add_timer("DEFAULT", time, func(timer_name): callback.call())
+
+func add_default_interval(time: float, callback: Callable):
+	return add_timer("DEFAULT", time, callback, false)
+
+func add_timer(timer_name: String, time: float, callback: Callable, one_shot = true) -> Timer:
+	del_timer(timer_name)
+	var timer := Timer.new()
+	add_child(timer)
+	timer.set_name(timer_name)
+	timer.set_one_shot(one_shot)
+	timer.start(time)
+	timer.timeout.connect(callback.bind(timer_name))
+	return timer
+
+
+func del_timer(timer_name: String) -> void:
+	if has_node(timer_name):
+		get_node(timer_name).stop()
+		get_node(timer_name).queue_free()
+		get_node(timer_name).set_name("to_delete")
+
+func del_default_timer() -> void:
+	del_timer("DEFAULT")
+
+func del_timers() -> void:
+	for c in get_children():
+		if c is Timer:
+			c.stop()
+			c.queue_free()
+			c.set_name("to_delete")
+
+
+func has_timer(timer_name: String) -> bool:
+	return has_node(timer_name)

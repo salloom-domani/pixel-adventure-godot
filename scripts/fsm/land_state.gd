@@ -1,5 +1,6 @@
+@tool
 class_name LandState
-extends PlayerState
+extends PlayerStateAnimation
 
 @onready var box_detector: Area2D = %BoxDetector
 @onready var ground = %Ground

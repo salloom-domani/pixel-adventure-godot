@@ -7,12 +7,13 @@ extends PlayerState
 @onready var lower: RayCast2D = %Lower
 @onready var wall_right: ShapeCast2D = %WallRight
 @onready var wall_left: ShapeCast2D = %WallLeft
+@onready var to_flip = %ToFlip
 
 
 func awake():
 	state_machine = $"."
 	character = $".."
-	animator = $"../Animator"
+	animator = $"../ToFlip/Animator"
 	player_data = $"../PlayerData"
 	collision_shape = $"../CollisionShape2D"
 
@@ -22,11 +23,11 @@ func ready():
 
 func flip_for_input(input):
 	if input:
-		character.scale = Vector2(input, 1)
-		character.rotation = 0
+		to_flip.scale = Vector2(input, 1)
+		to_flip.rotation = 0
 
 func flip():
-	character.apply_scale(Vector2(-1, 1))
+	to_flip.apply_scale(Vector2(-1, 1))
 
 
 func _ready() -> void:

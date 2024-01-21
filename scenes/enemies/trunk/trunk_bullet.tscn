@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8bud2b0s1sgf"]
+
+[ext_resource type="Script" path="res://scripts/enemies/trunk_bullet.gd" id="1_axjbk"]
+[ext_resource type="Texture2D" uid="uid://cu6rdl7avqxdy" path="res://sprites/Enemies/Trunk/Bullet.png" id="2_43wps"]
+[ext_resource type="PackedScene" uid="uid://xwsyppt1r3io" path="res://scenes/enemies/trunk/trunk_bullet_parts.tscn" id="2_ydbwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnlee"]
+size = Vector2(11, 7)
+
+[node name="TrunkBullet" type="RigidBody2D" groups=["bullet"]]
+collision_layer = 0
+collision_mask = 3
+gravity_scale = 0.0
+max_contacts_reported = 3
+contact_monitor = true
+script = ExtResource("1_axjbk")
+parts_scene = ExtResource("2_ydbwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_43wps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_tnlee")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

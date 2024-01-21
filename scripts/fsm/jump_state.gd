@@ -1,5 +1,6 @@
+@tool
 class_name JumpState
-extends PlayerState
+extends PlayerStateAnimation
 
 
 @onready var ground = %Ground

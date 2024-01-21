@@ -1,5 +1,6 @@
+@tool
 class_name MoveState
-extends PlayerState
+extends PlayerStateAnimation
 
 
 @onready var higher: RayCast2D = %Higher
@@ -21,8 +22,7 @@ func phy_update(_delta):
 		if absf(character.velocity.x) > player_data.MAX_SPEED:
 			character.velocity.x = sign(character.velocity.x) * player_data.MAX_SPEED
 		if lower.get_collider() and not higher.get_collider():
-			character.position.y -= 2
-			animator.animation = "move"
+			character.position.y -= 1.5
 	else:
 		parent.set_state("idle")
 	apply_ground_friction()

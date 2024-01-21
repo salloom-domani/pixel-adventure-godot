@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxaqaboo1esm7"]
+
+[ext_resource type="Script" path="res://scripts/enemies/trunk_bullet.gd" id="1_ulsia"]
+[ext_resource type="PackedScene" uid="uid://dq56shqblfw2s" path="res://scenes/enemies/plant/plant_bullet_parts.tscn" id="2_axs52"]
+[ext_resource type="Texture2D" uid="uid://lf1hddmfoa0x" path="res://sprites/Enemies/Plant/Bullet.png" id="3_bvvcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnlee"]
+size = Vector2(8, 8)
+
+[node name="PlantBullet" type="RigidBody2D" groups=["bullet"]]
+collision_layer = 0
+collision_mask = 3
+gravity_scale = 0.0
+max_contacts_reported = 3
+contact_monitor = true
+script = ExtResource("1_ulsia")
+parts_scene = ExtResource("2_axs52")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_bvvcx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_tnlee")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

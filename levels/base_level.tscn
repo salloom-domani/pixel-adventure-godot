@@ -1,14 +1,26 @@
-[gd_scene load_steps=19 format=3 uid="uid://crfa2wpvkfe54"]
+[gd_scene load_steps=28 format=3 uid="uid://crfa2wpvkfe54"]
 
-[ext_resource type="PackedScene" uid="uid://cmb4f6t21trer" path="res://scenes/background.tscn" id="1_lswwh"]
+[ext_resource type="Shader" uid="uid://q5gl6l885xlp" path="res://shaders/moving_background.tres" id="1_fgfi6"]
+[ext_resource type="Script" path="res://scripts/ui/background.gd" id="1_ngib1"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_2ryfd"]
+[ext_resource type="Texture2D" uid="uid://cyt56kk44s0tp" path="res://sprites/Backgrounds/Blue.png" id="2_u6tv2"]
 [ext_resource type="PackedScene" uid="uid://buanw0j1hhak4" path="res://scenes/player.tscn" id="2_ygb5c"]
+[ext_resource type="Texture2D" uid="uid://brqq1ryp05rgs" path="res://sprites/Backgrounds/Brown.png" id="3_0cews"]
 [ext_resource type="TileSet" uid="uid://ljb63n1ynirn" path="res://world.tres" id="3_5d5k2"]
+[ext_resource type="Texture2D" uid="uid://dbipeyw7diq0v" path="res://sprites/Backgrounds/Gray.png" id="4_1ssaw"]
+[ext_resource type="Texture2D" uid="uid://c15phtdccgxu0" path="res://sprites/Backgrounds/Green.png" id="5_b352x"]
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="5_do8vd"]
+[ext_resource type="Texture2D" uid="uid://catkmf2ryootn" path="res://sprites/Backgrounds/Pink.png" id="6_rau1g"]
 [ext_resource type="Texture2D" uid="uid://bd28jg5juoatg" path="res://sprites/Menu/Buttons/Previous.png" id="6_ut8wb"]
 [ext_resource type="Script" path="res://scripts/ui/ui_button.gd" id="7_23pyu"]
+[ext_resource type="Texture2D" uid="uid://i0t8o13otn4e" path="res://sprites/Backgrounds/Purple.png" id="7_djvqr"]
+[ext_resource type="Texture2D" uid="uid://b3wh6g0xia65q" path="res://sprites/Backgrounds/Yellow.png" id="8_c0b82"]
 [ext_resource type="Texture2D" uid="uid://vf0y3nwe4qj7" path="res://sprites/Menu/Buttons/Next.png" id="8_efck4"]
 [ext_resource type="Texture2D" uid="uid://bquetiaktm6q" path="res://sprites/Menu/Buttons/Restart.png" id="9_lluaw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bc3kx"]
+shader = ExtResource("1_fgfi6")
+shader_parameter/Speed = -0.25
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mjbr"]
 
@@ -39,8 +51,16 @@ events = [SubResource("InputEventJoypadButton_ak7sk")]
 
 [node name="World" type="Node"]
 
-[node name="Background" parent="." instance=ExtResource("1_lswwh")]
-metadata/_edit_lock_ = true
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bc3kx")
+position = Vector2(256, 144)
+texture = ExtResource("2_u6tv2")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 288)
+script = ExtResource("1_ngib1")
+textures = Array[Texture2D]([ExtResource("2_u6tv2"), ExtResource("3_0cews"), ExtResource("4_1ssaw"), ExtResource("5_b352x"), ExtResource("6_rau1g"), ExtResource("7_djvqr"), ExtResource("8_c0b82")])
+current_texture = "Blue"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

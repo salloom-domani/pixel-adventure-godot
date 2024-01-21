@@ -10,12 +10,16 @@ signal body_exited(body: Node)
 
 var colliding_bodies := {}
 
+var alive = true
 
 func die(direction: Vector2):
 	state_machine.set_state("dead", {"direction": direction})
+	alive = false
 
 
 func disable_checks():
+	collision_layer = 0
+	collision_mask = 0
 	for child in checks.get_children():
 		child.collision_mask = 0
 
@@ -48,12 +52,26 @@ func _on_body_entered(body: Node, collision: KinematicCollision2D) -> void:
 	#print(body.name, " has entered")
 	if body.name == "Platform":
 		body.get_parent().turn_on()
-	if body.is_in_group("fire"):
+	elif body.is_in_group("fire"):
 		var pos = collision.get_position()
-		if is_equal_approx(pos.x, body.position.x) or is_equal_approx(pos.y, body.position.y):
+		if is_equal_approx(pos.x, body.position.x) \
+		or is_equal_approx(pos.y, body.position.y):
 			body.hit()
-	if body is FallingPlatform:
+	elif body is FallingPlatform:
 		body.hit()
+	elif body.is_in_group("mob"):
+		var mob = body
+		if mob.is_directly_below(self.position, collision_shape.shape.extents.x):
+			var dir = (position - mob.position as Vector2).normalized()
+			mob.die(dir)
+			state_machine.set_state("in_air/jump", { "jump_speed": mob.bogo_jump })
+		else:
+			self.die(collision.get_normal())
+			if mob.has_signal("target_died"):
+				mob.target_died.emit()
+	elif body.is_in_group("bullet"):
+		#body.break_it()
+		self.die(collision.get_normal())
 
 
 func _on_body_exited(body: Node) -> void:

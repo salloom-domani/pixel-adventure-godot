@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://xwsyppt1r3io"]
+
+[ext_resource type="Texture2D" uid="uid://dm1xn6rhs0gfp" path="res://sprites/Enemies/Trunk/Bullet Pieces.png" id="1_3srmy"]
+[ext_resource type="Script" path="res://scripts/boxes/parts_root.gd" id="1_k2hfi"]
+[ext_resource type="Script" path="res://scripts/boxes/part.gd" id="2_gnnvj"]
+
+[node name="TrunkBulletParts" type="Node2D"]
+script = ExtResource("1_k2hfi")
+
+[node name="L" type="RigidBody2D" parent="."]
+position = Vector2(-3, 0)
+collision_layer = 4
+script = ExtResource("2_gnnvj")
+
+[node name="Sprite2D" type="Sprite2D" parent="L"]
+texture = ExtResource("1_3srmy")
+offset = Vector2(0, 0.5)
+region_enabled = true
+region_rect = Rect2(4, 5, 8, 7)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="L"]
+visible = false
+polygon = PackedVector2Array(3, 4, 0, 4, -4, 1, -4, 0, 0, -3, 2, -3, 4, 1)
+
+[node name="R" type="RigidBody2D" parent="."]
+position = Vector2(3, 0)
+collision_layer = 4
+script = ExtResource("2_gnnvj")
+
+[node name="Sprite2D" type="Sprite2D" parent="R"]
+texture = ExtResource("1_3srmy")
+offset = Vector2(0, 0.5)
+region_enabled = true
+region_rect = Rect2(21, 5, 6, 7)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="R"]
+visible = false
+polygon = PackedVector2Array(-3, -3, 1, -3, 3, -1, 3, 2, 1, 4, -1, 4, -2, 3, -3, -1)

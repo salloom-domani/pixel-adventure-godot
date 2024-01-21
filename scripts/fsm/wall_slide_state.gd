@@ -1,5 +1,6 @@
+@tool
 class_name WallSlideState
-extends PlayerState
+extends PlayerStateAnimation
 
 @onready var wall_right: ShapeCast2D = %WallRight
 @onready var wall_left: ShapeCast2D = %WallLeft

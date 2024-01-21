@@ -10,6 +10,7 @@ extends StaticBody2D
 @export var fruits_count = 3
 @export var one_by_one = false
 @export var jump_speed = -300
+@export var parts_explosion_power = 150
 
 var broken = false
 
@@ -36,13 +37,14 @@ func spawn_parts():
 	var instance = parts.instantiate()
 	add_sibling(instance)
 	instance.position = position
-	instance.explode(150)
+	instance.explode(parts_explosion_power)
 
 func spawn_fruits(count: int):
 	for i in range(count):
 		var new_fruit = fruit.instantiate()
 		add_sibling(new_fruit)
 		new_fruit.pick_random_type()
+		new_fruit.freeze = false
 		new_fruit.position.x = position.x + randf_range(-1,1)
 		new_fruit.position.y = position.y
 		new_fruit.explode()
