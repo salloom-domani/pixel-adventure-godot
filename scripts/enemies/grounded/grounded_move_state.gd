@@ -2,7 +2,7 @@
 class_name GroundedMoveState
 extends StateAnimation
 
-@onready var dust_move_particles = %DustMoveParticles
+#@onready var dust_move_particles = %DustMoveParticles
 @onready var vision: Vision = %Vision
 
 @export var speed = 50
@@ -10,7 +10,7 @@ extends StateAnimation
 
 func enter(args = {}):
 	super.enter(args)
-	dust_move_particles.emitting = true
+	#dust_move_particles.emitting = true
 
 
 func phy_update(delta):
@@ -22,7 +22,7 @@ func phy_update(delta):
 
 func exit():
 	super.exit()
-	dust_move_particles.emitting = false
+	#dust_move_particles.emitting = false
 
 func _init():
 	id = "move"

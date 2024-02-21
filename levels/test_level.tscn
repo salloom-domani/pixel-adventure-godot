@@ -1,8 +1,699 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkalvpxsugcxe"]
+[gd_scene load_steps=10 format=3 uid="uid://bkalvpxsugcxe"]
 
 [ext_resource type="PackedScene" uid="uid://crfa2wpvkfe54" path="res://levels/base_level.tscn" id="1_phnqc"]
+[ext_resource type="Texture2D" uid="uid://b3wh6g0xia65q" path="res://sprites/Backgrounds/Yellow.png" id="2_2d3n1"]
+[ext_resource type="Texture2D" uid="uid://d2wmybtbo4oeg" path="res://sprites/Transition.png" id="3_fe66c"]
+
+[sub_resource type="Animation" id="Animation_lbphy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nr4c8"]
+resource_name = "transition_in"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect4:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect5:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect6:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect7:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect8:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect9:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect10:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect11:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect12:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect13:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TextureRect14:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TextureRect15:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TextureRect16:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TextureRect17:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TextureRect18:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t6xqk"]
+resource_name = "transition_out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect4:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect5:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect6:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect7:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect8:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect9:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect10:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect11:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect12:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect13:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TextureRect14:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TextureRect15:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TextureRect16:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TextureRect17:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TextureRect18:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sb813"]
+_data = {
+"RESET": SubResource("Animation_lbphy"),
+"transition_in": SubResource("Animation_nr4c8"),
+"transition_out": SubResource("Animation_t6xqk")
+}
+
+[sub_resource type="GDScript" id="GDScript_ic6pb"]
+script/source = "extends StaticBody2D
+
+
+func _ready():
+	var rid = get_rid()
+	PhysicsServer2D.body_set_max_contacts_reported(rid, 1)
+	PhysicsServer2D.body_set_omit_force_integration(rid, true)
+	PhysicsServer2D.body_set_force_integration_callback(rid, _integrate_forces)
+
+
+func _integrate_forces():
+	print(\"forces\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lc50y"]
+size = Vector2(32, 32)
 
 [node name="World" instance=ExtResource("1_phnqc")]
 
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_2d3n1")
+
 [node name="Player" parent="." index="2"]
 position = Vector2(53, 240)
+
+[node name="Level" parent="TileMap" index="0"]
+layer_0/tile_data = PackedInt32Array(1048592, 65536, 0, 1114128, 65536, 5, 16, 65536, 5, 65552, 65536, 2, 0, 65536, 5, 65536, 65536, 5, 131072, 65536, 5, 196608, 65536, 5, 262144, 65536, 5, 327680, 65536, 5, 393216, 65536, 5, 458752, 65536, 5, 524288, 65536, 5, 589824, 65536, 5, 655360, 65536, 5, 720896, 65536, 5, 786432, 65536, 5, 851968, 65536, 5, 917504, 65536, 5, 983040, 65536, 5, 1048576, 65536, 5, 1114112, 65536, 5, 1, 65536, 5, 65537, 196608, 4, 131073, 131072, 5, 196609, 131072, 5, 1048577, 196608, 5, 1114113, 65536, 5, 2, 65536, 5, 65538, 65536, 2, 1048578, 65536, 0, 1114114, 65536, 5, 3, 65536, 5, 65539, 65536, 2, 1048579, 65536, 0, 1114115, 65536, 5, 4, 65536, 5, 65540, 65536, 2, 1048580, 65536, 0, 1114116, 65536, 5, 5, 65536, 5, 65541, 65536, 2, 1048581, 65536, 0, 1114117, 65536, 5, 6, 65536, 5, 65542, 65536, 2, 1048582, 65536, 0, 1114118, 65536, 5, 7, 65536, 5, 65543, 65536, 2, 1048583, 65536, 0, 1114119, 65536, 5, 8, 65536, 5, 65544, 65536, 2, 1048584, 65536, 0, 1114120, 65536, 5, 9, 65536, 5, 65545, 65536, 2, 1048585, 65536, 0, 1114121, 65536, 5, 10, 65536, 5, 65546, 65536, 2, 1048586, 65536, 0, 1114122, 65536, 5, 11, 65536, 5, 65547, 65536, 2, 1048587, 65536, 0, 1114123, 65536, 5, 12, 65536, 5, 65548, 65536, 2, 1048588, 65536, 0, 1114124, 65536, 5, 13, 65536, 5, 65549, 65536, 2, 1048589, 65536, 0, 1114125, 65536, 5, 14, 65536, 5, 65550, 65536, 2, 1048590, 65536, 0, 1114126, 65536, 5, 15, 65536, 5, 65551, 65536, 2, 1048591, 65536, 0, 1114127, 65536, 5, 262145, 131072, 5, 327681, 131072, 5, 393217, 131072, 5, 458753, 131072, 5, 524289, 131072, 5, 589825, 131072, 5, 655361, 131072, 5, 720897, 131072, 5, 786433, 131072, 5, 851969, 131072, 5, 917505, 131072, 5, 983041, 131072, 5, 17, 65536, 5, 65553, 65536, 2, 1048593, 65536, 0, 1114129, 65536, 5, 19, 65536, 5, 65555, 65536, 2, 1048595, 65536, 0, 1114131, 65536, 5, 20, 65536, 5, 65556, 65536, 2, 1048596, 65536, 0, 1114132, 65536, 5, 21, 65536, 5, 65557, 65536, 2, 1048597, 65536, 0, 1114133, 65536, 5, 22, 65536, 5, 65558, 65536, 2, 1048598, 65536, 0, 1114134, 65536, 5, 23, 65536, 5, 65559, 65536, 2, 1048599, 65536, 0, 1114135, 65536, 5, 24, 65536, 5, 65560, 65536, 2, 1048600, 65536, 0, 1114136, 65536, 5, 25, 65536, 5, 65561, 65536, 2, 1048601, 65536, 0, 1114137, 65536, 5, 26, 65536, 5, 65562, 65536, 2, 1048602, 65536, 0, 1114138, 65536, 5, 27, 65536, 5, 65563, 65536, 2, 1048603, 65536, 0, 1114139, 65536, 5, 28, 65536, 5, 65564, 65536, 2, 1048604, 65536, 0, 1114140, 65536, 5, 29, 65536, 5, 65565, 65536, 2, 1048605, 65536, 0, 1114141, 65536, 5, 30, 65536, 5, 65566, 262144, 4, 131102, 0, 5, 196638, 0, 5, 262174, 0, 5, 327710, 0, 5, 393246, 0, 5, 458782, 0, 5, 524318, 0, 5, 589854, 0, 5, 655390, 0, 5, 720926, 0, 5, 786462, 0, 5, 1048606, 262144, 1, 1114142, 65536, 5, 31, 65536, 5, 65567, 65536, 5, 131103, 65536, 5, 196639, 65536, 5, 262175, 65536, 5, 327711, 65536, 5, 393247, 65536, 5, 458783, 65536, 5, 524319, 65536, 5, 589855, 65536, 5, 655391, 65536, 5, 720927, 65536, 5, 786463, 65536, 5, 851999, 65536, 5, 917535, 65536, 5, 983071, 65536, 5, 1048607, 65536, 5, 1114143, 65536, 5, 18, 65536, 5, 1114130, 65536, 5, 1048594, 65536, 0, 65554, 65536, 2, 851998, 0, 5, 917534, 0, 5, 983070, 0, 5, 1179648, 65536, 5, 1179649, 65536, 5, 1179650, 65536, 5, 1179651, 65536, 5, 1179652, 65536, 5, 1179653, 65536, 5, 1179654, 65536, 5, 1179655, 65536, 5, 1179656, 65536, 5, 1179657, 65536, 5, 1179658, 65536, 5, 1179659, 65536, 5, 1179660, 65536, 5, 1179661, 65536, 5, 1179662, 65536, 5, 1179663, 65536, 5, 1179664, 65536, 5, 1179665, 65536, 5, 1179666, 65536, 5, 1179667, 65536, 5, 1179668, 65536, 5, 1179669, 65536, 5, 1179670, 65536, 5, 1179671, 65536, 5, 1179672, 65536, 5, 1179673, 65536, 5, 1179674, 65536, 5, 1179675, 65536, 5, 1179676, 65536, 5, 1179677, 65536, 5, 1179678, 65536, 5, 1179679, 65536, 5, 1179680, 65536, 5, 1114144, 65536, 5, 1048608, 65536, 5, 983072, 65536, 5, 917536, 65536, 5, 852000, 65536, 5, 786464, 65536, 5, 720928, 65536, 5, 655392, 65536, 5, 589856, 65536, 5, 524320, 65536, 5, 458784, 65536, 5, 393248, 65536, 5, 327712, 65536, 5, 262176, 65536, 5, 196640, 65536, 5, 131104, 65536, 5, 65568, 65536, 5, 32, 65536, 5, -65504, 65536, 5, -65505, 65536, 5, -65506, 65536, 5, -65507, 65536, 5, -65508, 65536, 5, -65509, 65536, 5, -65510, 65536, 5, -65511, 65536, 5, -65512, 65536, 5, -65513, 65536, 5, -65514, 65536, 5, -65515, 65536, 5, -65516, 65536, 5, -65517, 65536, 5, -65518, 65536, 5, -65519, 65536, 5, -65520, 65536, 5, -65521, 65536, 5, -65522, 65536, 5, -65523, 65536, 5, -65524, 65536, 5, -65525, 65536, 5, -65526, 65536, 5, -65527, 65536, 5, -65528, 65536, 5, -65529, 65536, 5, -65530, 65536, 5, -65531, 65536, 5, -65532, 65536, 5, -65533, 65536, 5, -65534, 65536, 5, -65535, 65536, 5, -65536, 65536, 5, -1, 65536, 5, 65535, 65536, 5, 131071, 65536, 5, 196607, 65536, 5, 262143, 65536, 5, 327679, 65536, 5, 393215, 65536, 5, 458751, 65536, 5, 524287, 65536, 5, 589823, 65536, 5, 655359, 65536, 5, 720895, 65536, 5, 786431, 65536, 5, 851967, 65536, 5, 917503, 65536, 5, 983039, 65536, 5, 1048575, 65536, 5, 1114111, 65536, 5, 1179647, 65536, 5, 1245183, 65536, 5, 262146, 1179648, 1, 262147, 1245184, 1, 458754, 1179648, 1, 458755, 1245184, 1, 655362, 1179648, 1, 655363, 1245184, 1, 851970, 1179648, 1, 851971, 1245184, 1)
+
+[node name="Transition" type="Control" parent="UI" index="1"]
+visible = false
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -91.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="UI/Transition" index="0"]
+layout_mode = 1
+offset_right = 44.0
+offset_bottom = 44.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Transition" index="1"]
+layout_mode = 2
+offset_left = 93.0
+offset_right = 137.0
+offset_bottom = 44.0
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Transition" index="2"]
+layout_mode = 2
+offset_left = 186.0
+offset_right = 230.0
+offset_bottom = 44.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Transition" index="3"]
+layout_mode = 2
+offset_left = 279.0
+offset_right = 323.0
+offset_bottom = 44.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect5" type="TextureRect" parent="UI/Transition" index="4"]
+layout_mode = 2
+offset_left = 372.0
+offset_right = 416.0
+offset_bottom = 44.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect6" type="TextureRect" parent="UI/Transition" index="5"]
+layout_mode = 2
+offset_left = 465.0
+offset_right = 509.0
+offset_bottom = 44.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect7" type="TextureRect" parent="UI/Transition" index="6"]
+layout_mode = 2
+offset_top = 69.0
+offset_right = 44.0
+offset_bottom = 113.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect8" type="TextureRect" parent="UI/Transition" index="7"]
+layout_mode = 2
+offset_left = 93.0
+offset_top = 69.0
+offset_right = 137.0
+offset_bottom = 113.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect9" type="TextureRect" parent="UI/Transition" index="8"]
+layout_mode = 2
+offset_left = 186.0
+offset_top = 69.0
+offset_right = 230.0
+offset_bottom = 113.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect10" type="TextureRect" parent="UI/Transition" index="9"]
+layout_mode = 2
+offset_left = 279.0
+offset_top = 69.0
+offset_right = 323.0
+offset_bottom = 113.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect11" type="TextureRect" parent="UI/Transition" index="10"]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 69.0
+offset_right = 416.0
+offset_bottom = 113.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect12" type="TextureRect" parent="UI/Transition" index="11"]
+layout_mode = 2
+offset_left = 465.0
+offset_top = 69.0
+offset_right = 509.0
+offset_bottom = 113.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect13" type="TextureRect" parent="UI/Transition" index="12"]
+layout_mode = 2
+offset_top = 138.0
+offset_right = 44.0
+offset_bottom = 182.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect14" type="TextureRect" parent="UI/Transition" index="13"]
+layout_mode = 2
+offset_left = 93.0
+offset_top = 138.0
+offset_right = 137.0
+offset_bottom = 182.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect15" type="TextureRect" parent="UI/Transition" index="14"]
+layout_mode = 2
+offset_left = 186.0
+offset_top = 138.0
+offset_right = 230.0
+offset_bottom = 182.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect16" type="TextureRect" parent="UI/Transition" index="15"]
+layout_mode = 2
+offset_left = 279.0
+offset_top = 138.0
+offset_right = 323.0
+offset_bottom = 182.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect17" type="TextureRect" parent="UI/Transition" index="16"]
+layout_mode = 2
+offset_left = 372.0
+offset_top = 138.0
+offset_right = 416.0
+offset_bottom = 182.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="TextureRect18" type="TextureRect" parent="UI/Transition" index="17"]
+layout_mode = 2
+offset_left = 465.0
+offset_top = 138.0
+offset_right = 509.0
+offset_bottom = 182.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(22, 22)
+texture = ExtResource("3_fe66c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Transition" index="18"]
+libraries = {
+"": SubResource("AnimationLibrary_sb813")
+}
+autoplay = "transition_in"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="6"]
+position = Vector2(208, 240)
+collision_mask = 3
+constant_linear_velocity = Vector2(0, -500)
+script = SubResource("GDScript_ic6pb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("RectangleShape2D_lc50y")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" index="1"]
+color = Color(0.59375, 0.238892, 0.238892, 1)
+polygon = PackedVector2Array(16, -16, 16, 16, -16, 16, -16, -16)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://10hdihmy55sp"]
+[gd_scene load_steps=72 format=3 uid="uid://10hdihmy55sp"]
 
 [ext_resource type="Script" path="res://scripts/enemies/trunk.gd" id="1_qww6u"]
 [ext_resource type="Texture2D" uid="uid://tfdi2yuycmxl" path="res://sprites/Enemies/Trunk/Attack (64x32).png" id="2_w4e1k"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://scripts/enemies/trunk_state_machine.gd" id="9_kkijg"]
 [ext_resource type="Script" path="res://scripts/enemies/ground_vision.gd" id="9_o51xp"]
 [ext_resource type="Script" path="res://scripts/enemies/grounded/grounded_shoot_state.gd" id="13_fedj0"]
+[ext_resource type="Script" path="res://scripts/hit_box.gd" id="15_unnxq"]
+[ext_resource type="Script" path="res://scripts/hurt_box.gd" id="16_4hsmh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0atvs"]
 font_size = 8
@@ -386,7 +388,14 @@ colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_reujs"]
 size = Vector2(424, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o14p"]
+size = Vector2(26, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2muq7"]
+size = Vector2(26, 17)
+
 [node name="Trunk" type="CharacterBody2D" node_paths=PackedStringArray("to_flip") groups=["mob"]]
+collision_layer = 16
 script = ExtResource("1_qww6u")
 to_flip = NodePath("ToFlip")
 
@@ -402,7 +411,6 @@ label_settings = SubResource("LabelSettings_0atvs")
 horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_eyh45")
 
@@ -472,13 +480,11 @@ starting_state = "idle"
 [node name="GroundedIdleState" type="Node" parent="MobStateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("7_gke5x")
 animated_sprite = NodePath("../../ToFlip/Animator")
-state_id = null
 animation = &"idle"
 
 [node name="GroundedMoveState" type="Node" parent="MobStateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("8_5y73u")
 animated_sprite = NodePath("../../ToFlip/Animator")
-state_id = null
 animation = &"move"
 
 [node name="GroundedShootState" type="Node" parent="MobStateMachine" node_paths=PackedStringArray("animated_sprite")]
@@ -490,8 +496,29 @@ animation = &"attack"
 [node name="GroundedDeadState" type="Node" parent="MobStateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("9_3t2v4")
 animated_sprite = NodePath("../../ToFlip/Animator")
-state_id = null
 animation = &"hit"
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("15_unnxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_2o14p")
+debug_color = Color(0.85098, 0, 0.027451, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2048
+collision_mask = 256
+script = ExtResource("16_4hsmh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_2muq7")
+debug_color = Color(0.803922, 0.419608, 0, 0.419608)
 
 [connection signal="body_entered" from="ToFlip/PlayerDetector" to="MobStateMachine" method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="ToFlip/PlayerDetector" to="MobStateMachine/GroundedShootState" method="_on_player_detector_body_exited"]

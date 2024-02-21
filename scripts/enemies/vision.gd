@@ -2,11 +2,8 @@ class_name Vision
 extends Node2D
 
 
-var parent: Mob
-
 func _ready():
-	parent = owner
-	parent.checks_disabled.connect(disable)
+	owner.checks_disabled.connect(disable)
 
 
 func disable():

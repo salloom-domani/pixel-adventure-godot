@@ -4,6 +4,7 @@ extends PlayerState
 @onready var box_detector: Area2D = %BoxDetector
 
 func enter(args = {}):
+	super.enter(args)
 	if not current_state:
 		set_state("fall")
 	else:

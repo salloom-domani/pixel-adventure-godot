@@ -5,14 +5,13 @@ extends PlayerState
 
 
 func enter(args = {}):
+	super.enter(args)
 	player_data.double_jump = true
 	if not current_state:
 		if character.velocity.x != 0:
 			set_state("move")
 		else:
 			set_state("idle")
-	else:
-		current_state.enter(args)
 
 
 func phy_update(delta):

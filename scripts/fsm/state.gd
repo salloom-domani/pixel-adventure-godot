@@ -14,9 +14,12 @@ var children = {}
 var current_state
 signal state_changed(id: String)
 
+signal state_entered
+signal state_exited
 
 # TODO: make an inner class for the args
 func enter(args = {}):
+	state_entered.emit()
 	if debug :
 		print("entering: ", id)
 	if current_state:
@@ -24,6 +27,7 @@ func enter(args = {}):
 
 
 func exit():
+	state_exited.emit()
 	if debug:
 		print("exiting: ", id)
 	if current_state:
@@ -39,6 +43,7 @@ func phy_update(delta: float) -> void:
 		current_state.phy_update(delta)
 
 # TODO: make set state discover its parent
+# TODO: maake set state takes a node reference as its argument
 func set_state(path: String, enter_args = {}):
 	var ids = path.split("/")
 

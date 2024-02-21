@@ -34,4 +34,13 @@ func _get_property_list():
 
 func _ready():
 	texture = textures.pick_random()
+	if not Engine.is_editor_hint():
+		Global.background_flashed.connect(flash_background)
 
+func set_flash_power(val):
+	material.set_shader_parameter("flash_power", val)
+
+func flash_background():
+	var tween = create_tween()
+	tween.tween_method(set_flash_power, 0.0, 0.2, 0.1)
+	tween.tween_method(set_flash_power, 0.2, 0, 0.1)

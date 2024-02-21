@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt7au3uv0ofyx"]
+
+[sub_resource type="GDScript" id="GDScript_sabax"]
+script/source = "extends StaticBody2D
+
+@export var max_contacts: int
+
+signal body_entered(body: Node)
+signal body_exited(body: Node)
+
+@onready var body_rid := get_rid()
+var colliding_bodies := {}
+
+func _ready() -> void:
+	PhysicsServer2D.body_set_max_contacts_reported(body_rid, max_contacts)
+
+
+func _physics_process(delta):
+	var state = PhysicsServer2D.body_get_direct_state(body_rid)
+	var new_colliding_bodies := {}
+	prints(state.get_contact_count())
+	for i in state.get_contact_count():
+		var body := state.get_contact_collider_object(i) as PhysicsBody2D
+		if not is_instance_valid(body):
+			continue
+		new_colliding_bodies[body_rid] = body
+		if not colliding_bodies.has(body_rid):
+			body_entered.emit(body)
+			colliding_bodies[body_rid] = body
+	
+	for rid in colliding_bodies.keys():
+		if not new_colliding_bodies.has(rid):
+			var body = colliding_bodies[rid]
+			body_exited.emit(body)
+	
+	colliding_bodies = new_colliding_bodies
+
+
+func _on_body_entered(body):
+	prints(body.name, \"has entered\")
+
+
+func _on_body_exited(body):
+	prints(body.name, \"has exited\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjg0i"]
+size = Vector2(512, 56)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1jvei"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Static" type="StaticBody2D" parent="."]
+position = Vector2(256, 260)
+script = SubResource("GDScript_sabax")
+max_contacts = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static"]
+shape = SubResource("RectangleShape2D_gjg0i")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(256, 96)
+shape = SubResource("CapsuleShape2D_1jvei")
+
+[connection signal="body_entered" from="Static" to="Static" method="_on_body_entered"]
+[connection signal="body_exited" from="Static" to="Static" method="_on_body_exited"]

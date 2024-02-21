@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dxjbrullx67h3"]
 
 [ext_resource type="PackedScene" uid="uid://crfa2wpvkfe54" path="res://levels/base_level.tscn" id="1_0lrrw"]
+[ext_resource type="Texture2D" uid="uid://dbipeyw7diq0v" path="res://sprites/Backgrounds/Gray.png" id="2_3ktp3"]
 [ext_resource type="PackedScene" uid="uid://dvj6jtar3qwp5" path="res://scenes/fruit.tscn" id="2_5qbu4"]
-[ext_resource type="Texture2D" uid="uid://c15phtdccgxu0" path="res://sprites/Backgrounds/Green.png" id="2_r8kg2"]
 [ext_resource type="PackedScene" uid="uid://cduhvxvqjx0wm" path="res://scenes/enemies/mushroom.tscn" id="3_t5s3g"]
 
 [node name="World" instance=ExtResource("1_0lrrw")]
 
 [node name="Background" parent="." index="0"]
-texture = ExtResource("2_r8kg2")
+texture = ExtResource("2_3ktp3")
 
 [node name="Player" parent="." index="2"]
 position = Vector2(88, 192)

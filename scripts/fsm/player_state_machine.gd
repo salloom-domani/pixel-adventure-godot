@@ -57,8 +57,6 @@ func check_if_squashed():
 		var wall_left_type = get_wall_type(wall_left)
 		var wall_right_type = get_wall_type(wall_right)
 		if wall_left_type != "platform" and wall_right_type != "platform":
-			print(wall_left_type, wall_right_type)
-			print(wall_left_collider, wall_right_collider)
 			set_state("dead", {"direction": Vector2.UP})
 
 

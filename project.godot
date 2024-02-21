@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Pixel Adventure"
-run/main_scene="res://levels/second chapter/level_6.tscn"
+run/main_scene="res://levels/second chapter/level_7.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://sprites/Main Characters/Ninja Frog/Jump (32x32).png"
+config/icon="res://MrCool.png"
 
 [autoload]
 
@@ -31,9 +31,14 @@ window/size/window_width_override=1024
 window/size/window_height_override=576
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Pixel Adventure"
+
 [file_customization]
 
 folder_colors={
+"res://addons/": "pink",
 "res://levels/": "yellow",
 "res://resources/": "gray",
 "res://scenes/": "green",
@@ -42,6 +47,10 @@ folder_colors={
 "res://sprite frames/": "orange",
 "res://sprites/": "red"
 }
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
@@ -117,10 +126,10 @@ jump={
 2d_physics/layer_6="bullet"
 2d_physics/layer_7="part"
 2d_physics/layer_8="s"
-
-[physics]
-
-2d/physics_engine="Box2D"
+2d_physics/layer_9="player hit box"
+2d_physics/layer_10="player hurt box"
+2d_physics/layer_11="mob hit box"
+2d_physics/layer_12="mob hurt box"
 
 [rendering]
 

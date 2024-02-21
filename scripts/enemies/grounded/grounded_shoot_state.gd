@@ -25,8 +25,9 @@ func on_animation_finished():
 	if should_exit:
 		parent.set_state("idle")
 		return
-	await get_tree().create_timer(shoot_delay).timeout
-	animated_sprite.play("attack")
+	add_default_timer(shoot_delay, func(): animated_sprite.play("attack"))
+	#await get_tree().create_timer(shoot_delay).timeout
+	#animated_sprite.play("attack")
 
 
 func attack():
@@ -40,5 +41,6 @@ func _on_player_detector_body_exited(body):
 
 func exit():
 	super.exit()
-	animated_sprite.frame_changed.disconnect(on_frame_changed)	
+	animated_sprite.frame_changed.disconnect(on_frame_changed)
 	animated_sprite.animation_finished.disconnect(on_animation_finished)
+	del_default_timer()

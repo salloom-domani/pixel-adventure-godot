@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dctcjakqr3geo"]
+[gd_scene load_steps=5 format=3 uid="uid://dctcjakqr3geo"]
 
 [ext_resource type="PackedScene" uid="uid://crfa2wpvkfe54" path="res://levels/base_level.tscn" id="1_hv5rm"]
+[ext_resource type="Texture2D" uid="uid://c15phtdccgxu0" path="res://sprites/Backgrounds/Green.png" id="2_iaj3c"]
 [ext_resource type="PackedScene" uid="uid://dvj6jtar3qwp5" path="res://scenes/fruit.tscn" id="3_ol81k"]
 [ext_resource type="PackedScene" uid="uid://chb4jyhj34dn4" path="res://scenes/enemies/bee/bee.tscn" id="4_iqpij"]
 
 [node name="World" instance=ExtResource("1_hv5rm")]
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_iaj3c")
 
 [node name="Player" parent="." index="2"]
 position = Vector2(256, 128)

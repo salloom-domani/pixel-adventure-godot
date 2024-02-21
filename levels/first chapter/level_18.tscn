@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr41aqyex3dd2"]
+[gd_scene load_steps=6 format=3 uid="uid://cr41aqyex3dd2"]
 
 [ext_resource type="PackedScene" uid="uid://crfa2wpvkfe54" path="res://levels/base_level.tscn" id="1_qb5h0"]
 [ext_resource type="PackedScene" uid="uid://chituqb245oki" path="res://scenes/checkpoints/checkpoint.tscn" id="2_k2n3c"]
+[ext_resource type="Texture2D" uid="uid://c15phtdccgxu0" path="res://sprites/Backgrounds/Green.png" id="2_vcmvy"]
 [ext_resource type="PackedScene" uid="uid://33yhtnswdr25" path="res://scenes/checkpoints/start_checkpoint.tscn" id="3_fyi4t"]
 [ext_resource type="PackedScene" uid="uid://bn5xu7vfc1hr7" path="res://scenes/checkpoints/end_checkpoint.tscn" id="4_c5h33"]
 
 [node name="World" instance=ExtResource("1_qb5h0")]
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_vcmvy")
 
 [node name="Player" parent="." index="2"]
 position = Vector2(88, 88)

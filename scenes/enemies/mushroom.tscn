@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cduhvxvqjx0wm"]
+[gd_scene load_steps=53 format=3 uid="uid://cduhvxvqjx0wm"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mob.gd" id="1_yq5a4"]
 [ext_resource type="Texture2D" uid="uid://butuaopdf0quh" path="res://sprites/Enemies/Mushroom/Hit.png" id="2_pimnn"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scripts/enemies/grounded/grounded_idle_state.gd" id="6_y3roy"]
 [ext_resource type="Script" path="res://scripts/enemies/grounded/grounded_move_state.gd" id="7_66c0o"]
 [ext_resource type="Script" path="res://scripts/enemies/grounded/grounded_dead_state.gd" id="8_xkk2b"]
+[ext_resource type="Script" path="res://scripts/hit_box.gd" id="11_81l5c"]
+[ext_resource type="Script" path="res://scripts/hurt_box.gd" id="12_dbect"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyh45"]
 size = Vector2(26, 20)
@@ -280,14 +282,18 @@ animations = [{
 [sub_resource type="Gradient" id="Gradient_75wff"]
 colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gt050"]
+size = Vector2(26, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7vca"]
+size = Vector2(24, 13)
+
 [node name="Mushroom" type="CharacterBody2D" node_paths=PackedStringArray("to_flip") groups=["mob"]]
 collision_layer = 16
-collision_mask = 3
 script = ExtResource("1_yq5a4")
 to_flip = NodePath("ToFlip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_eyh45")
 
@@ -339,6 +345,7 @@ starting_state = "idle"
 
 [node name="GroundedIdleState" type="Node" parent="MobStateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("6_y3roy")
+flip_before = null
 animated_sprite = NodePath("../../ToFlip/Animator")
 animation = &"idle"
 
@@ -351,3 +358,25 @@ animation = &"move"
 script = ExtResource("8_xkk2b")
 animated_sprite = NodePath("../../ToFlip/Animator")
 animation = &"hit"
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("11_81l5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_gt050")
+debug_color = Color(0.85098, 0, 0.027451, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2048
+collision_mask = 256
+script = ExtResource("12_dbect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_i7vca")
+debug_color = Color(0.803922, 0.419608, 0, 0.419608)

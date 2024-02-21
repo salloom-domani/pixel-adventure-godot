@@ -8,6 +8,7 @@ var clock_wise = false
 func enter(args = {}):
 	super.enter(args)
 	Global.camera_shaked.emit()
+	Global.background_flashed.emit()
 	character.disable_checks()
 	character.velocity = Vector2.ZERO
 	var direction = args["direction"] as Vector2

@@ -4,6 +4,7 @@ var first_chapter: LevelsMenu = load("res://resources/first_chapter.tres")
 var second_chapter: LevelsMenu = load("res://resources/second_chapter.tres")
 
 signal camera_shaked
+signal background_flashed
 signal scene_changed(idx, chapter)
 
 func _ready():

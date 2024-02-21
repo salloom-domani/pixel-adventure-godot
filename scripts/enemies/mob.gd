@@ -5,8 +5,12 @@ extends CharacterBody2D
 @onready var state_machine = $MobStateMachine
 @onready var collision = $CollisionShape2D
 #@onready var vision = %Vision
+@onready var hit_box_collision = %HitBox/CollisionShape2D
+@onready var hurt_box_collision = %HurtBox/CollisionShape2D
 
-var bogo_jump = -200
+var bogo_jump = -350
+var should_bogo_jump = true
+var bogo_acceptable_miss = .2
 
 @export var direction = -1
 @export var to_flip: Node2D
@@ -18,8 +22,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func disable_checks():
-	collision_layer = 0
-	collision_mask = 0
+	collision.set_deferred("disabled", true)
+	hit_box_collision.set_deferred("disabled", true)
+	hurt_box_collision.set_deferred("disabled", true)
 	checks_disabled.emit()
 	#vision.queue_free()
 
@@ -31,10 +36,22 @@ func flip_for_direction(dir: int):
 	to_flip.rotation = 0
 	direction = dir
 
-func die(dir: Vector2):
-	state_machine.set_state("dead", {"direction": dir})
+func die(hit_dir: Vector2):
+	state_machine.set_state("dead", {"direction": hit_dir * -1})
 
 func is_directly_below(other: Vector2, width: float):
-	return other.x > collision.global_position.x - collision.shape.extents.x - width \
-		and other.x < collision.global_position.x + collision.shape.extents.x + width \
-		and other.y < collision.global_position.y - collision.shape.extents.y
+	var collision_width = collision.shape.extents.x 
+	var collision_height = collision.shape.extents.y
+	var pos_x = collision.global_position.x
+	var pos_y = collision.global_position.y + bogo_acceptable_miss
+	return other.x > pos_x - collision_width - width \
+		and other.x < pos_x + collision_height + width \
+		and other.y < pos_y - collision_height
+
+
+# FIXME: this need to consider the lowest point of the player
+# rather than the collsion point which could not be predicted
+func should_die(collision_point: Vector2):
+	var collision_height = collision.shape.extents.y
+	return collision_point.y < collision.global_position.y \
+		- collision_height * ( 1 - bogo_acceptable_miss )

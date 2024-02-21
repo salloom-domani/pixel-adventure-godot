@@ -1,12 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://buanw0j1hhak4"]
+[gd_scene load_steps=36 format=3 uid="uid://buanw0j1hhak4"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_my1kc"]
 [ext_resource type="SpriteFrames" uid="uid://ccb4nibcdb54h" path="res://sprite frames/ninja_frog.tres" id="2_o88w5"]
-[ext_resource type="SpriteFrames" uid="uid://52ag6viv03ws" path="res://sprite frames/pink_man.tres" id="2_qa8qa"]
 [ext_resource type="Script" path="res://scripts/player/random_skin.gd" id="3_e8fhd"]
-[ext_resource type="SpriteFrames" uid="uid://bwosxah62cnrm" path="res://sprite frames/mask_dude.tres" id="4_5vpsm"]
-[ext_resource type="SpriteFrames" uid="uid://bel4jharwhurd" path="res://sprite frames/virtual_guy.tres" id="6_qybyb"]
 [ext_resource type="Script" path="res://scripts/fsm/player_state_machine.gd" id="7_env7w"]
+[ext_resource type="SpriteFrames" uid="uid://psa84o1pbsg" path="res://sprite frames/mr_cool.tres" id="7_owxic"]
 [ext_resource type="Script" path="res://scripts/fsm/grounded_state.gd" id="8_r6x0r"]
 [ext_resource type="Script" path="res://scripts/fsm/idle_state.gd" id="9_cgilj"]
 [ext_resource type="Script" path="res://scripts/player/box_detector.gd" id="9_u40qn"]
@@ -24,7 +22,9 @@
 [ext_resource type="Script" path="res://scripts/fsm/coyote_time_state.gd" id="19_sxin4"]
 [ext_resource type="Script" path="res://scripts/fsm/dead_state.gd" id="24_1p32a"]
 [ext_resource type="Texture2D" uid="uid://cox88sgbq7l5w" path="res://sprites/Dust Particle.png" id="26_1nqvr"]
+[ext_resource type="Script" path="res://scripts/hit_box.gd" id="26_hin5h"]
 [ext_resource type="Texture2D" uid="uid://cern0tvl7fh1r" path="res://sprites/Traps/Sand Mud Ice/Ice Particle.png" id="27_r6xd5"]
+[ext_resource type="Script" path="res://scripts/hurt_box.gd" id="27_sd5g7"]
 [ext_resource type="Texture2D" uid="uid://d3x4pg34qhu2c" path="res://sprites/Traps/Sand Mud Ice/Sand Particle.png" id="28_o3kkh"]
 [ext_resource type="Texture2D" uid="uid://dku5hmnxttvxg" path="res://sprites/Traps/Sand Mud Ice/Mud Particle.png" id="29_4yan2"]
 
@@ -45,11 +45,19 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 size = Vector2(18, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k1rc"]
-size = Vector2(18, 40)
+size = Vector2(16, 40)
 
-[node name="Character" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyyph"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qjb8"]
+size = Vector2(20, 22)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(-7.51203, 0.617577)
 collision_layer = 2
-collision_mask = 57
+collision_mask = 41
+platform_on_leave = 2
 safe_margin = 0.1
 script = ExtResource("1_my1kc")
 
@@ -107,7 +115,7 @@ sprite_frames = ExtResource("2_o88w5")
 animation = &"idle"
 autoplay = "idle"
 script = ExtResource("3_e8fhd")
-animations = Array[SpriteFrames]([ExtResource("4_5vpsm"), ExtResource("2_o88w5"), ExtResource("2_qa8qa"), ExtResource("6_qybyb")])
+animations = Array[SpriteFrames]([ExtResource("7_owxic")])
 
 [node name="Particles" type="Node2D" parent="ToFlip"]
 
@@ -330,15 +338,6 @@ shape = SubResource("RectangleShape2D_5k1rc")
 
 [node name="PlayerData" type="Node" parent="."]
 script = ExtResource("10_k0xyw")
-IN_AIR_SPEED = 150.0
-ACCELERATION = 25.0
-GROUND_FRICTION = 100.0
-AIR_FRICTION = 100.0
-JUMP_SPEED = -370.0
-GRAVITY = 1400.0
-INTENSE_GRAVITY = 1500.0
-WALL_JUMP = Vector2(-100, -200)
-WALL_JUMP_TIME = 0.1
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("7_env7w")
@@ -349,19 +348,16 @@ script = ExtResource("8_r6x0r")
 [node name="IdleState" type="Node" parent="PlayerStateMachine/GroundedState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("9_cgilj")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"idle"
 
 [node name="MoveState" type="Node" parent="PlayerStateMachine/GroundedState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("10_k004f")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"move"
 
 [node name="LandState" type="Node" parent="PlayerStateMachine/GroundedState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("13_w36om")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &""
 
 [node name="InAirState" type="Node" parent="PlayerStateMachine"]
@@ -370,19 +366,16 @@ script = ExtResource("9_x71gd")
 [node name="JumpState" type="Node" parent="PlayerStateMachine/InAirState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("11_5patb")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"jump"
 
 [node name="FallState" type="Node" parent="PlayerStateMachine/InAirState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("13_iid4k")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"fall"
 
 [node name="DoubleJumpState" type="Node" parent="PlayerStateMachine/InAirState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("15_2afn7")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"double_jump"
 
 [node name="CoyoteTimeState" type="Node" parent="PlayerStateMachine/InAirState"]
@@ -394,26 +387,45 @@ script = ExtResource("16_4ykab")
 [node name="WallSlideState" type="Node" parent="PlayerStateMachine/TouchingWallState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("17_3u5ji")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"wall_slide"
 
 [node name="WallJumpState" type="Node" parent="PlayerStateMachine/TouchingWallState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("18_y03ks")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"jump"
 
 [node name="WallJumpOffState" type="Node" parent="PlayerStateMachine/TouchingWallState" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("19_3eam5")
 animated_sprite = NodePath("../../../ToFlip/Animator")
-state_id = null
 animation = &"jump"
 
 [node name="DeadState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("24_1p32a")
 animated_sprite = NodePath("../../ToFlip/Animator")
-state_id = null
 animation = &"hit"
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 256
+collision_mask = 2048
+script = ExtResource("26_hin5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_iyyph")
+debug_color = Color(0.85098, 0, 0.027451, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 512
+collision_mask = 1024
+priority = 1
+script = ExtResource("27_sd5g7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_7qjb8")
+debug_color = Color(0.803922, 0.419608, 0, 0.419608)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

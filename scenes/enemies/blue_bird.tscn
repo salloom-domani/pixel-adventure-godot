@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dfg75shil0luu"]
+[gd_scene load_steps=31 format=3 uid="uid://dfg75shil0luu"]
 
 [ext_resource type="Texture2D" uid="uid://cwh3kreq532mo" path="res://sprites/Enemies/BlueBird/Flying (32x32).png" id="1_71qet"]
 [ext_resource type="Script" path="res://scripts/enemies/mob.gd" id="1_s0hg0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scripts/enemies/grounded/grounded_dead_state.gd" id="4_fahtg"]
 [ext_resource type="Script" path="res://scripts/enemies/air_vision.gd" id="4_h4fji"]
 [ext_resource type="Script" path="res://scripts/enemies/flying_state.gd" id="6_c5pao"]
+[ext_resource type="Script" path="res://scripts/hit_box.gd" id="9_yxrfr"]
+[ext_resource type="Script" path="res://scripts/hurt_box.gd" id="10_os8xy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6qd7"]
 size = Vector2(17, 20)
@@ -129,14 +131,18 @@ colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wflx0"]
 size = Vector2(2, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqcsb"]
+size = Vector2(17, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldwcc"]
+size = Vector2(17, 11)
+
 [node name="BlueBird" type="CharacterBody2D" node_paths=PackedStringArray("to_flip") groups=["mob"]]
 collision_layer = 16
-collision_mask = 3
 script = ExtResource("1_s0hg0")
 to_flip = NodePath(".")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(4.5, -1)
 shape = SubResource("RectangleShape2D_t6qd7")
 
@@ -187,3 +193,27 @@ animation = &"flying"
 script = ExtResource("4_fahtg")
 animated_sprite = NodePath("../../Animator")
 animation = &"hit"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("9_yxrfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(4.5, 4.5)
+shape = SubResource("RectangleShape2D_gqcsb")
+debug_color = Color(0.85098, 0, 0.027451, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2048
+collision_mask = 256
+script = ExtResource("10_os8xy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(4.5, -5.5)
+shape = SubResource("RectangleShape2D_ldwcc")
+debug_color = Color(0.803922, 0.419608, 0, 0.419608)

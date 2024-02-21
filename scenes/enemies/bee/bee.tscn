@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://chb4jyhj34dn4"]
+[gd_scene load_steps=36 format=3 uid="uid://chb4jyhj34dn4"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mob.gd" id="1_eq0ho"]
 [ext_resource type="Texture2D" uid="uid://daq25qockvs5q" path="res://sprites/Enemies/Bee/Idle (36x34).png" id="2_g42kl"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://scripts/enemies/shooter.gd" id="3_u2vyi"]
 [ext_resource type="Texture2D" uid="uid://cqwo52jxbbx7y" path="res://sprites/Enemies/Bee/Hit (36x34).png" id="4_ji2i8"]
 [ext_resource type="PackedScene" uid="uid://btebjkd22sn1l" path="res://scenes/enemies/bee/bee_bullet.tscn" id="6_y468r"]
-[ext_resource type="Script" path="res://scripts/enemies/mob_state_machine.gd" id="7_yp8xw"]
+[ext_resource type="Script" path="res://scripts/enemies/bee_state_machine.gd" id="7_l4wwa"]
 [ext_resource type="Script" path="res://scripts/enemies/grounded/grounded_dead_state.gd" id="8_2mj0s"]
 [ext_resource type="Script" path="res://scripts/enemies/zapping_state.gd" id="9_pxdpx"]
 [ext_resource type="Script" path="res://scripts/enemies/timed_state.gd" id="11_k51gr"]
+[ext_resource type="Script" path="res://scripts/hit_box.gd" id="11_on1k4"]
+[ext_resource type="Script" path="res://scripts/hurt_box.gd" id="12_etkqp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arjv2"]
 atlas = ExtResource("2_osauc")
@@ -165,9 +167,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3in00"]
 size = Vector2(18, 29)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_em8qw"]
+size = Vector2(18, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsaj3"]
+size = Vector2(18, 13)
+
 [node name="Bee" type="CharacterBody2D" node_paths=PackedStringArray("to_flip") groups=["mob"]]
 collision_layer = 16
-collision_mask = 3
 script = ExtResource("1_eq0ho")
 to_flip = NodePath(".")
 
@@ -190,8 +197,8 @@ script = ExtResource("3_u2vyi")
 bullet_scene = ExtResource("6_y468r")
 
 [node name="MobStateMachine" type="Node" parent="."]
-script = ExtResource("7_yp8xw")
-starting_state = "zap"
+script = ExtResource("7_l4wwa")
+starting_state = "zap/shoot"
 
 [node name="GroundedDeadState" type="Node" parent="MobStateMachine" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("8_2mj0s")
@@ -219,4 +226,26 @@ animated_sprite = NodePath("../../../Animator")
 state_id = "shoot"
 animation = &"attack"
 
-[connection signal="event" from="MobStateMachine/ZappingState/ShootState" to="MobStateMachine/ZappingState" method="_on_shoot_state_event"]
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("11_on1k4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_em8qw")
+debug_color = Color(0.85098, 0, 0.027451, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2048
+collision_mask = 256
+script = ExtResource("12_etkqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_jsaj3")
+debug_color = Color(0.803922, 0.419608, 0, 0.419608)
+
+[connection signal="event" from="MobStateMachine/ZappingState/ShootState" to="MobStateMachine" method="_on_shoot_state_event"]

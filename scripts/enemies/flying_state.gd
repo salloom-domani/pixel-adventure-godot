@@ -28,14 +28,14 @@ func phy_update(delta):
 		character.velocity.x += acceleration * character.direction
 		if abs(character.velocity.x) > max_speed:
 			character.velocity.x = max_speed * character.direction
-
 		#character.velocity.x = speed * character.direction
 
 
 func exit():
 	super.exit()
 	dust_move_particles.emitting = false
-	tween.kill()
+	if tween:
+		tween.kill()
 
 func _init():
 	id = "fly"

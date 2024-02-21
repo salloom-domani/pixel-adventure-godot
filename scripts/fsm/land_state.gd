@@ -13,7 +13,7 @@ extends PlayerStateAnimation
 
 
 func enter(args = {}):
-	#super.enter(args)
+	super.enter(args)
 	match get_ground_tile_type():
 		"ice":
 			ice_land_particles.restart()

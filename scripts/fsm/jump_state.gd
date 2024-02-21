@@ -24,7 +24,10 @@ func enter(args = {}):
 			_:
 				dust_jump_particles.restart()
 	var jump_speed = args["jump_speed"] if args.has("jump_speed") else player_data.JUMP_SPEED
+	
+	#await get_tree().create_timer(.02).timeout
 	character.velocity.y = jump_speed
+	
 
 func get_ground_tile_type():
 	var tile_map = ground.get_collider()
@@ -35,6 +38,7 @@ func get_ground_tile_type():
 		return cell_tile_data.get_custom_data("type")
 
 func phy_update(_delta):
+	#print(character.velocity.y)
 	if character.velocity.y > 0:
 		parent.set_state("fall")
 

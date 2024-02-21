@@ -3,7 +3,8 @@ extends PlayerState
 
 
 
-func enter(_args = {}):
+func enter(args = {}):
+	super.enter(args)
 	get_tree().create_timer(player_data.COYOTE_TIME).timeout.connect(_on_timeout)
 
 

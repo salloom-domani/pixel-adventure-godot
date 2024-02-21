@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://bapyhasyokheq"]
+[gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://bapyhasyokheq"]
 
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_gyiqh"]
 op_type = 0
@@ -22,12 +22,6 @@ operator = 2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5rfe2"]
 operator = 2
-
-[sub_resource type="VisualShaderNodeVec2Constant" id="VisualShaderNodeVec2Constant_87saj"]
-constant = Vector2(0.5, 0.5)
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5j6fp"]
-parameter_name = "FloatParameter"
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ygsro"]
 
@@ -140,10 +134,6 @@ nodes/vertex/15/node = SubResource("VisualShaderNodeFloatOp_6u4j3")
 nodes/vertex/15/position = Vector2(-169.847, 91.3499)
 nodes/vertex/16/node = SubResource("VisualShaderNodeFloatOp_5rfe2")
 nodes/vertex/16/position = Vector2(-169.847, 291.35)
-nodes/vertex/22/node = SubResource("VisualShaderNodeVec2Constant_87saj")
-nodes/vertex/22/position = Vector2(-660, -260)
-nodes/vertex/24/node = SubResource("VisualShaderNodeFloatParameter_5j6fp")
-nodes/vertex/24/position = Vector2(-1140, -160)
 nodes/vertex/26/node = SubResource("VisualShaderNodeFloatOp_ygsro")
 nodes/vertex/26/position = Vector2(-708.685, 46.0408)
 nodes/vertex/27/node = SubResource("VisualShaderNodeFloatConstant_r2dvl")

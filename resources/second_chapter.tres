@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelsMenu" load_steps=8 format=3 uid="uid://lvynnpjvieii"]
+[gd_resource type="Resource" script_class="LevelsMenu" load_steps=22 format=3 uid="uid://lvynnpjvieii"]
 
 [ext_resource type="Script" path="res://scripts/resources/levels_menu.gd" id="1_o4252"]
 [ext_resource type="PackedScene" uid="uid://dxjbrullx67h3" path="res://levels/second chapter/level_1.tscn" id="1_tbbyy"]
@@ -7,7 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://blao0747qt6vr" path="res://levels/second chapter/level_4.tscn" id="4_y50h7"]
 [ext_resource type="PackedScene" uid="uid://bf75uvu54i003" path="res://levels/second chapter/level_5.tscn" id="5_knkhs"]
 [ext_resource type="PackedScene" uid="uid://dctcjakqr3geo" path="res://levels/second chapter/level_6.tscn" id="6_wnlcg"]
+[ext_resource type="PackedScene" uid="uid://bkq44r7hdv2hc" path="res://levels/second chapter/level_7.tscn" id="7_567xt"]
+[ext_resource type="PackedScene" uid="uid://c7r3thxe5teku" path="res://levels/second chapter/level_8.tscn" id="8_5uoq3"]
+[ext_resource type="PackedScene" uid="uid://bgcnku63ctcr0" path="res://levels/second chapter/level_9.tscn" id="9_foa85"]
+[ext_resource type="PackedScene" uid="uid://cj21e0x8036r4" path="res://levels/second chapter/level_10.tscn" id="10_7q2qg"]
+[ext_resource type="PackedScene" uid="uid://ba1vhclgi188a" path="res://levels/second chapter/level_11.tscn" id="11_64712"]
+[ext_resource type="PackedScene" uid="uid://dlpm5l3mffn7m" path="res://levels/second chapter/level_12.tscn" id="12_syr2g"]
+[ext_resource type="PackedScene" uid="uid://dlaq7tab3mma" path="res://levels/second chapter/level_13.tscn" id="13_w11sf"]
+[ext_resource type="PackedScene" uid="uid://bh5a7cw7j52om" path="res://levels/second chapter/level_14.tscn" id="14_5p2yr"]
+[ext_resource type="PackedScene" uid="uid://dfojxa6wqsisx" path="res://levels/second chapter/level_15.tscn" id="15_8ecy8"]
+[ext_resource type="PackedScene" uid="uid://bseif3avnwot2" path="res://levels/second chapter/level_16.tscn" id="16_wq6dw"]
+[ext_resource type="PackedScene" uid="uid://dyj18vxpq5hgw" path="res://levels/second chapter/level_17.tscn" id="17_1b6is"]
+[ext_resource type="PackedScene" uid="uid://djwoiihbeeeud" path="res://levels/second chapter/level_18.tscn" id="18_ud2r6"]
+[ext_resource type="PackedScene" uid="uid://dlxj13fk6m68e" path="res://levels/second chapter/level_19.tscn" id="19_fn6lh"]
+[ext_resource type="PackedScene" uid="uid://c5mkfrk5ql5mv" path="res://levels/second chapter/level_20.tscn" id="20_ockpd"]
 
 [resource]
 script = ExtResource("1_o4252")
-levels = Array[PackedScene]([ExtResource("1_tbbyy"), ExtResource("2_ny82y"), ExtResource("3_48ifo"), ExtResource("4_y50h7"), ExtResource("5_knkhs"), ExtResource("6_wnlcg")])
+levels = Array[PackedScene]([ExtResource("1_tbbyy"), ExtResource("2_ny82y"), ExtResource("3_48ifo"), ExtResource("4_y50h7"), ExtResource("5_knkhs"), ExtResource("6_wnlcg"), ExtResource("7_567xt"), ExtResource("8_5uoq3"), ExtResource("9_foa85"), ExtResource("10_7q2qg"), ExtResource("11_64712"), ExtResource("12_syr2g"), ExtResource("13_w11sf"), ExtResource("14_5p2yr"), ExtResource("15_8ecy8"), ExtResource("16_wq6dw"), ExtResource("17_1b6is"), ExtResource("18_ud2r6"), ExtResource("19_fn6lh"), ExtResource("20_ockpd")])

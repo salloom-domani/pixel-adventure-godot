@@ -27,7 +27,8 @@ func on_animation_finished():
 	if current_times <= 0:
 		parent.set_state(next_state)
 		return
-	await get_tree().create_timer(delay).timeout
+	if delay > 0:
+		await get_tree().create_timer(delay).timeout
 	animated_sprite.play(animation)
 
 
