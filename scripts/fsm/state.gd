@@ -7,6 +7,7 @@ func get_debug():
 	return debug or parent and parent.get_debug()
 
 var id
+var root: State
 var parent: State
 var character: CharacterBody2D
 var animator: AnimatedSprite2D
@@ -16,6 +17,13 @@ signal state_changed(id: String)
 
 signal state_entered
 signal state_exited
+
+
+#func _get_configuration_warnings():
+	#if not unique_name_in_owner:
+		#return ["states should be unique to be accessed"]
+	#else:
+		#return []
 
 # TODO: make an inner class for the args
 func enter(args = {}):
@@ -58,6 +66,20 @@ func set_state(path: String, enter_args = {}):
 	
 	current_state.enter(enter_args)
 
+func new_set_state(new_state: State, enter_args = {}):
+	 
+	root.discover_state()
+	# find the lowest common ancestor between the current state and the new one
+	if current_state:
+		print("new_state is the parent of the state")
+	# finding the ancestor requies knowing the root
+	
+	# exit from the ancestor to the exited state
+	
+	# enter from the ancestor the new state
+	
+	pass
+
 
 func awake():
 	pass
@@ -77,9 +99,12 @@ func _on_state_changed(_state_id: String) -> void:
 
 func start() -> void:
 	awake()
+	if not get_parent() is State:
+		root = self
 	for state in get_children():
 		if state is State:
 			state.parent = self
+			state.root = self.root
 			set_child_refs(state)
 			state.state_changed.connect(_on_state_changed)
 			children[state.id] = state

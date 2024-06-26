@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlaq7tab3mma"]
 
 [ext_resource type="PackedScene" uid="uid://crfa2wpvkfe54" path="res://levels/base_level.tscn" id="1_6xgun"]
-[ext_resource type="Texture2D" uid="uid://c15phtdccgxu0" path="res://sprites/Backgrounds/Green.png" id="2_bh0p1"]
+[ext_resource type="Texture2D" uid="uid://dbipeyw7diq0v" path="res://sprites/Backgrounds/Gray.png" id="2_tdmpg"]
 [ext_resource type="PackedScene" uid="uid://dvj6jtar3qwp5" path="res://scenes/fruit.tscn" id="3_dkmaa"]
 
 [node name="World" instance=ExtResource("1_6xgun")]
 
 [node name="Background" parent="." index="0"]
-texture = ExtResource("2_bh0p1")
+texture = ExtResource("2_tdmpg")
 
 [node name="Player" parent="." index="2"]
 position = Vector2(432, 80)
